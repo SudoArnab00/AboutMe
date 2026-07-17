@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Arnab Bhattacharjee</title>
+<meta name="description" content="Network & DLP Security Specialist, moving into Incident Response and Digital Forensics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFF9F2;
+    --ink:#181418;
+    --slate:#665F6B;
+    --coral:#FF5A3C;
+    --coral-dim:#FFE4DB;
+    --teal:#0F8B7E;
+    --teal-dim:#DAF1EE;
+    --violet:#6C4CE0;
+    --violet-dim:#E9E3FB;
+    --gold:#E0A200;
+    --gold-dim:#FBF0D3;
+    --card:#FFFFFF;
+    --line:#EFE6DC;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px 16px;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .display{font-family:'Space Grotesk',sans-serif;}
+
+  /* ambient blobs */
+  .blob{
+    position:fixed; border-radius:50%; filter:blur(60px); opacity:.35; z-index:0;
+    pointer-events:none;
+  }
+  .blob1{width:260px;height:260px;background:var(--coral);top:-80px;left:-80px;}
+  .blob2{width:220px;height:220px;background:var(--violet);bottom:-60px;right:-60px;}
+
+  .card{
+    position:relative; z-index:1;
+    width:100%; max-width:400px;
+    background:var(--card);
+    border-radius:28px;
+    border:1px solid var(--line);
+    padding:36px 26px 28px;
+    box-shadow:0 20px 50px -20px rgba(24,20,24,.18);
+  }
+
+  .avatar{
+    width:64px;height:64px;border-radius:18px;
+    background:linear-gradient(135deg,var(--coral),var(--gold));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;
+    margin-bottom:18px;
+  }
+
+  h1{font-size:26px;font-weight:700;letter-spacing:-0.01em;line-height:1.15;margin-bottom:6px;}
+  .pitch{font-size:14.5px;color:var(--slate);line-height:1.55;margin-bottom:22px;max-width:320px;}
+  .pitch strong{color:var(--ink);font-weight:600;}
+
+  .label{
+    font-size:11px;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--slate); font-weight:600; margin-bottom:10px;
+  }
+
+  /* topic chips - tap to reveal */
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
+  .chip{
+    font-size:13px; font-weight:500; padding:8px 14px; border-radius:100px;
+    border:none; cursor:pointer; -webkit-tap-highlight-color:transparent;
+    transition:transform .12s ease;
+    font-family:'Inter',sans-serif;
+  }
+  .chip:active{transform:scale(.96);}
+  .chip[data-c="coral"]{background:var(--coral-dim);color:#B8341A;}
+  .chip[data-c="teal"]{background:var(--teal-dim);color:#0A5A52;}
+  .chip[data-c="violet"]{background:var(--violet-dim);color:#4A32A8;}
+  .chip[data-c="gold"]{background:var(--gold-dim);color:#8A6600;}
+  .chip.active{outline:2px solid currentColor;outline-offset:1px;}
+
+  .reveal{
+    max-height:0; overflow:hidden; transition:max-height .3s ease, margin .3s ease;
+    margin-top:0;
+  }
+  .reveal.open{max-height:120px; margin-top:14px;}
+  .reveal-inner{
+    font-size:13.5px; color:var(--ink); background:var(--bg);
+    border:1px solid var(--line); border-radius:14px; padding:14px 16px; line-height:1.5;
+  }
+
+  .divider{height:1px;background:var(--line);margin:26px 0 22px;}
+
+  .actions{display:flex;flex-direction:column;gap:10px;}
+  .social-row{display:flex;gap:10px;}
+  .btn-icon{
+    flex:1;
+    display:flex; align-items:center; justify-content:center;
+    padding:13px 0; border-radius:16px;
+    border:1.5px solid var(--line); color:var(--ink);
+    transition:transform .12s ease, background .15s ease;
+  }
+  .btn-icon:active{transform:scale(.96);}
+  .btn-icon:hover{background:var(--bg);}
+  .btn{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:14px 18px; border-radius:16px; text-decoration:none;
+    font-size:14.5px; font-weight:600; transition:transform .12s ease;
+  }
+  .btn:active{transform:scale(.98);}
+  .btn-primary{background:var(--ink); color:#fff;}
+  .btn-line{border:1.5px solid var(--line); color:var(--ink);}
+  .btn .arrow{opacity:.5;font-weight:400;}
+
+  .foot{
+    text-align:center; margin-top:22px;
+    font-size:11.5px; color:var(--slate); opacity:.7;
+  }
+
+  @media (max-width:380px){
+    .card{padding:30px 20px 24px;border-radius:22px;}
+    h1{font-size:23px;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+
+  <div class="card">
+    <div class="avatar display">AB</div>
+    <h1 class="display">Arnab Bhattacharjee</h1>
+    <p class="pitch">
+      Network &amp; DLP Security Specialist, <strong>moving into Incident Response
+      &amp; Digital Forensics.</strong>
+    </p>
+
+    <div class="social-row" style="margin-bottom:26px;">
+      <a class="btn-icon" href="https://www.linkedin.com/in/arnab00" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6.94 8.5H3.56V20.5H6.94V8.5Z" fill="currentColor"/><path d="M5.25 7.03C6.35 7.03 7.25 6.13 7.25 5.02C7.25 3.9 6.35 3 5.25 3C4.14 3 3.25 3.9 3.25 5.02C3.25 6.13 4.14 7.03 5.25 7.03Z" fill="currentColor"/><path d="M20.5 13.6C20.5 10.28 18.66 8.5 15.99 8.5C14.6 8.5 13.42 9.16 12.75 10.15V8.75H9.37V20.5H12.75V13.87C12.75 12.36 13.5 11.44 14.79 11.44C15.98 11.44 16.62 12.28 16.62 13.87V20.5H20V13.6H20.5Z" fill="currentColor"/></svg>
+      </a>
+      <a class="btn-icon" href="https://x.com/ghost_in_hex" target="_blank" rel="noopener" aria-label="X (Twitter)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M13.6 10.6L20.6 2.5H18.9L12.85 9.5L8 2.5H2.4L9.75 13.1L2.4 21.5H4.1L10.5 14.1L15.6 21.5H21.2L13.6 10.6ZM11.3 13.2L10.55 12.15L4.65 3.75H7.2L11.95 10.5L12.7 11.55L18.9 20.35H16.35L11.3 13.2Z" fill="currentColor"/></svg>
+      </a>
+    </div>
+
+    <div class="label">Ask me about</div>
+    <div class="chips">
+      <button class="chip" data-c="coral" data-msg="Stopping data walking out the door without turning the whole company into a paperwork exercise. Enterprise DLP is basically applied trust issues.">Data leak prevention</button>
+      <button class="chip" data-c="teal" data-msg="Every cloud breach I've read about eventually comes down to someone having way more access than they needed. Cloud-native abuse is just permissions gone feral.">Cloud-native abuse</button>
+      <button class="chip" data-c="violet" data-msg="Zero Trust and CASB sound great in a vendor deck. Getting them to actually work in a messy real environment is a different, much funnier story.">Zero Trust / CASB</button>
+      <button class="chip" data-c="gold" data-msg="Trying to earn my way into a real IR seat, one case study and detection writeup at a time. Slow, but it's sticking.">Breaking into DFIR</button>
+      <button class="chip" data-c="coral" data-msg="Top 1% on TryHackMe, mostly from stubbornly refusing to look up the walkthrough. Always up to compare notes on rooms worth your time.">TryHackMe profile</button>
+      <button class="chip" data-c="teal" data-msg="Running Ollama locally and gluing things together with n8n, purely because tinkering with it is more fun than most hobbies have a right to be.">On-Prem AI</button>
+    </div>
+
+    <div class="label" style="margin-top:24px;">Currently working on</div>
+    <div class="chips">
+      <button class="chip" data-c="violet" data-msg="I can read a log file all day but under a clock, mapping what I'm seeing to the right ATT&amp;CK technique still makes me pause. Working through it with timed drills.">ATT&amp;CK mapping under pressure</button>
+      <button class="chip" data-c="gold" data-msg="Honest confession: when a hard DFIR case gets uncomfortable, I somehow end up fixing my homelab instead. Learning to notice it and go back to the hard thing anyway.">Staying on the hard task</button>
+    </div>
+
+    <div class="reveal" id="reveal">
+      <div class="reveal-inner" id="revealText"></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="actions">
+      <a class="btn btn-line" href="https://tryhackme.com/p/Abyx0x0" target="_blank" rel="noopener">
+        View my TryHackMe <span class="arrow">↗</span>
+      </a>
+      <a class="btn btn-primary" href="mailto:work@digitaldefender.in">
+        work@digitaldefender.in <span class="arrow">↗</span>
+      </a>
+      <a class="btn btn-line" href="https://www.credly.com/users/arnab-bhattacharjee.a0de6ba8" target="_blank" rel="noopener">
+        View my Credly <span class="arrow">↗</span>
+      </a>
+    </div>
+
+    <div class="foot">tap a topic above to see what I'm into</div>
+  </div>
+
+  <script>
+    const chips = document.querySelectorAll('.chip');
+    const reveal = document.getElementById('reveal');
+    const revealText = document.getElementById('revealText');
+    let activeChip = null;
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const isSame = activeChip === chip;
+        chips.forEach(c => c.classList.remove('active'));
+        if (isSame) {
+          reveal.classList.remove('open');
+          activeChip = null;
+          return;
+        }
+        chip.classList.add('active');
+        revealText.textContent = chip.getAttribute('data-msg');
+        reveal.classList.add('open');
+        activeChip = chip;
+      });
+    });
+  </script>
+
+</body>
+</html>
